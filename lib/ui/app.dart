@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/expense.dart';
 import 'expenses/expense_form.dart';
 import 'expenses/expenses.dart';
+import '../ui/expenses/expense_statistic.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -79,7 +80,14 @@ class _AppState extends State<App> {
         backgroundColor: Colors.blue[700],
         title: const Text('Ronan-The-Best Expenses App'),
       ),
-      body: ExpensesView(expenses : _expenses, onRemoveExpense : _removeExpense),
+      body: Column(
+        children: [
+          ExpenseStatistic(expenses: _expenses),
+          Expanded(child: ExpensesView(expenses : _expenses, onRemoveExpense : _removeExpense),)
+          
+        ],
+      )
+      
     );
   }
 }
